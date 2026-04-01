@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
         TestHelper.getInstance()?.printSDKLog("Hello")
 
     }

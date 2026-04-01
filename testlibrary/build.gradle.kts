@@ -50,7 +50,7 @@ afterEvaluate {
 
                 groupId = "io.github.j7tushar"
                 artifactId = "testlibrary"
-                version = "1.0.0"
+                version = "1.0.1"
 
                 pom {
                     name.set("testlibrary")

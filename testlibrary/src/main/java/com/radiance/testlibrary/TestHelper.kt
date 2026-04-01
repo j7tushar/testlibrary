@@ -16,4 +16,8 @@ class TestHelper {
     fun printSDKLog(msg: String) {
         Log.e("TestHelper", "printSDKLog: $msg")
     }
+
+    fun printSDKLogNew(msg: String) {
+        Log.e("TestHelper", "printSDKLogNew: $msg")
+    }
 }
