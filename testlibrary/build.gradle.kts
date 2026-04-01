@@ -45,7 +45,7 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.tushar"
+                groupId = "io.github.j7tushar"
                 artifactId = "testlibrary"
                 version = "1.0.0"
             }
