@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.maven.publish)
+    alias(libs.plugins.signing)
 }
 
 android {
-    namespace = "com.tushar.testlibrary"
+    namespace = "io.github.j7tushar.testlibrary"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -36,6 +37,7 @@ android {
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
 }
@@ -45,12 +47,45 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
+
                 groupId = "io.github.j7tushar"
                 artifactId = "testlibrary"
                 version = "1.0.0"
+
+                pom {
+                    name.set("testlibrary")
+                    description.set("Android SDK library")
+                    url.set("https://github.com/j7tushar/testlibrary")
+
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("j7tushar")
+                            name.set("Tushar")
+                            email.set("jkano109@gmail.com")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:git://github.com/j7tushar/testlibrary.git")
+                        developerConnection.set("scm:git:ssh://github.com/j7tushar/testlibrary.git")
+                        url.set("https://github.com/j7tushar/testlibrary")
+                    }
+                }
             }
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }
 
 dependencies {
